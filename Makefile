@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap.a
-SRC = push_swap_input_handler.c push_swap.c
+SRC = push_swap_input_handler.c push_swap.c presort.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
