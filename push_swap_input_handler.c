@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/09 09:22:02 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/09 09:31:49 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	handler(int argc, char *argv[])
 /*		*/printf("array filled with: %d\n--------------------------\n", a[c - 1]);
 		c++;
 	}
-	err += duplicate_finder(a);
+	err += duplicate_finder(a, argc);
 /*		*/printf("errs: %d\n", err);
 	if (err > 0)
 		write(1, "Error", 5);
@@ -91,7 +91,7 @@ int	char_to_int(char *input, long int *out)
 	return (0);
 }
 
-int	duplicate_finder(int *a)
+int	duplicate_finder(int *a, int argc)
 {
 	int	c;
 	int	i;
@@ -99,10 +99,10 @@ int	duplicate_finder(int *a)
 	c = 0;
 	i = 0;
 /*		*/printf("------------\n");
-	while (a[c])
+	while (c < argc - 1)
 	{
 		i = c + 1;
-		while (a[i])
+		while (i < argc - 1)
 		{
 			if (a[c] == a[i])
 			{
