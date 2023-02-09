@@ -19,16 +19,16 @@ BONOBJ = $(BONSRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -cvq $(NAME) $^
+	ar -cq $(NAME) $^
 
 bonus : $(BONOBJ) $(OBJ)
-	ar -cvq $(NAME) $^
+	ar -cq $(NAME) $^
 
 fclean :
-	-rm $(OBJ) $(NAME)
+	-rm -f $(OBJ) $(NAME)
 
 clean :
-	-rm $(OBJ)
+	-rm -f $(OBJ)
 
 re : fclean all
 
