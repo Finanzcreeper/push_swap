@@ -1,19 +1,21 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 NAME = push_swap.a
-SRC = push_swap_input_handler.c push_swap.c presort.c
+VPATH = actions
+SRC = push_swap_input_handler.c push_swap.c presort.c push_swap_coder.c push.c swap.c action_utils.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) LIBFT
+$(NAME) : $(OBJ)
+	make -C libft
 	ar -cq $(NAME) $(OBJ)
 
-LIBFT :
-	make -C libft
+test : $(NAME) comp clean
+	 - rm $(NAME)
 
-test : re
-	clear && $(CC) main.c $(NAME) libft/libft.a && make clean && clear
+comp :
+	clear && $(CC) main.c $(NAME) libft/libft.a
 
 clean :
 	- rm -f $(OBJ)
@@ -21,6 +23,7 @@ clean :
 
 fclean : clean
 	- rm -f $(NAME)
+	- rm -f a.out
 	@ make fclean -C libft
 
 re : fclean all
