@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:34:46 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/13 20:50:55 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/14 12:00:19 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,47 +31,4 @@ int	main(int argc, char *argv[])
 		write(1, "Error", 5);
 		return (0);
 	}
-
-	c = 0;
-	printf("input:\n");
-	while (arrs[0][c] != sentinel)
-	{
-		printf("%d\n", arrs[0][c]);
-		c++;
-	}
-
-	arrs = pb(arrs, sentinel);
-	c = 0;
-	printf("\n--\na:\n");
-	while (arrs[0][c] != sentinel)
-	{
-		printf("%d\n", arrs[0][c]);
-		c++;
-	}
-
-	c = 0;
-	printf("--\nb:\n");
-	while (arrs[1][c] != sentinel)
-	{
-		printf("%d\n", arrs[1][c]);
-		c++;
-	}
-
-	arrs = pa(arrs, sentinel);
-	c = 0;
-	printf("\n--\na:\n");
-	while (arrs[0][c] != sentinel)
-	{
-		printf("%d\n", arrs[0][c]);
-		c++;
-	}
-
-	c = 0;
-	printf("--\nb:\n");
-	while (arrs[1][c] != sentinel)
-	{
-		printf("%d\n", arrs[1][c]);
-		c++;
-	}
-	return (0);
 }

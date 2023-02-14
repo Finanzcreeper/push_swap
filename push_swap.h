@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:06:56 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/13 21:51:12 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:53:31 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ int		**pa(int **old, int sentinel);
 int		**pb(int **old, int sentinel);
 int		**freelloc_arr(int **old, int flag, int pa, int sentinel);
 int		ft_intarrlen(int *a, int sentinel);
+void	ra(int **arrs, int sentinel);
+void	rb(int **arrs, int sentinel);
+void	rr(int **arrs, int sentinel);
+void	rra(int **arrs, int sentinel);
+void	rrb(int **arrs, int sentinel);
+void	rrr(int **arrs, int sentinel);
 #endif

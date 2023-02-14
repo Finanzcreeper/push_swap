@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:18:29 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/13 21:54:44 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:36:16 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	**pb(int **old, int sentinel)
 	}
 	new[1][c] = sentinel;
 	freelloc_arr(old, 0, 0, sentinel);
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 	return (new);
 }
 
@@ -65,7 +65,7 @@ int	**pa(int **old, int sentinel)
 	}
 	new[0][c] = sentinel;
 	freelloc_arr(old, 0, 0, sentinel);
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:18:53 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/13 21:39:53 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:36:35 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sa(int *a, int sentinel)
 	temp = a[0];
 	a[0] = a[1];
 	a[1] = temp;
-	write(1, "sa", 2);
+	write(1, "sa\n", 3);
 }
 
 void	sb(int *b, int sentinel)
@@ -35,7 +35,7 @@ void	sb(int *b, int sentinel)
 	temp = b[0];
 	b[0] = b[1];
 	b[1] = temp;
-	write(1, "sb", 2);
+	write(1, "sb\n", 3);
 }
 
 void	ss(int **arrs, int sentinel)
@@ -52,5 +52,5 @@ void	ss(int **arrs, int sentinel)
 	temp = arrs[1][0];
 	arrs[1][0] = arrs[1][1];
 	arrs[1][1] = temp;
-	write(1, "ss", 2);
+	write(1, "ss\n", 3);
 }
