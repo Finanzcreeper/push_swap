@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include	<stdarg.h>
 # include	<stddef.h>
 # include	<stdlib.h>
 # include	<unistd.h>
@@ -78,4 +79,13 @@ void	ft_fremp(char **temp);
 int		ft_has_nl(const char *s);
 char	*ft_stranl(const char *s);
 char	*ft_strbnl(char *s);
+//ft_printf
+int		ft_printf(const char *input, ...);
+int		ft_decide(va_list args, char c, int out);
+void	join(char c, int *out);
+int		pointer_maker(unsigned long i, char c, int d);
+int		ft_writehex(unsigned long nbr, char c, int checker);
+int		ft_putunbr_fd(unsigned int n, int t);
+int		ft_putnstr_fd(char *s);
+int		ft_putnnbr_fd(int n, int t);
 #endif

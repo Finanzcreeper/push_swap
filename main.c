@@ -6,20 +6,18 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:34:46 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/14 12:00:19 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/15 18:06:36 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
 	int	**arrs;
 	int	err;
 	int	sentinel;
-	int	c;
+	int	*presorted;
 
 	err = 0;
 	arrs = ft_calloc(3, sizeof(int *));
@@ -28,7 +26,10 @@ int	main(int argc, char *argv[])
 	arrs[1][0] = sentinel;
 	if (err > 0)
 	{
-		write(1, "Error", 5);
+		write(2, "Error\n", 6);
 		return (0);
 	}
+	presorted = presort(arrs, sentinel);
+	mysort(arrs, sentinel, presorted);
+	return (0);
 }

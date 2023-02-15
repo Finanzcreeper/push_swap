@@ -6,12 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:18:29 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/14 11:36:16 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/15 18:00:29 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	**pb(int **old, int sentinel)
 {
@@ -20,7 +19,7 @@ int	**pb(int **old, int sentinel)
 
 	if (old[0][0] == sentinel)
 		return (old);
-	new = freelloc_arr(old, 1, 0, sentinel);
+	new = alloc_arr(old, sentinel, 0);
 	new[1][0] = old[0][0];
 	c = 0;
 	while (old[0][c + 1] != sentinel)
@@ -36,7 +35,7 @@ int	**pb(int **old, int sentinel)
 		c++;
 	}
 	new[1][c] = sentinel;
-	freelloc_arr(old, 0, 0, sentinel);
+	free_arr(old);
 	write(1, "pb\n", 3);
 	return (new);
 }
@@ -48,7 +47,7 @@ int	**pa(int **old, int sentinel)
 
 	if (old[1][0] == sentinel)
 		return (old);
-	new = freelloc_arr(old, 1, 1, sentinel);
+	new = alloc_arr(old, sentinel, 1);
 	new[0][0] = old[1][0];
 	c = 0;
 	while (old[1][c + 1] != sentinel)
@@ -64,47 +63,33 @@ int	**pa(int **old, int sentinel)
 		c++;
 	}
 	new[0][c] = sentinel;
-	freelloc_arr(old, 0, 0, sentinel);
+	free_arr(old);
 	write(1, "pa\n", 3);
 	return (new);
 }
 
-int	**freelloc_arr(int **old, int flag, int pa, int sntnl)
+void	free_arr(int **old)
+{
+	free(old[1]);
+	free(old[0]);
+	free(old);
+}
+
+int	**alloc_arr(int **old, int sentinel, int pa)
 {
 	int	**new;
 
-	if (flag == 1)
+	if (pa == 1)
 	{
-		if (pa == 1)
-		{
-			new = ft_calloc(3, sizeof(int *));
-			new[1] = ft_calloc(ft_intarrlen(old[1], sntnl), sizeof(int *));
-			new[0] = ft_calloc(ft_intarrlen(old[0], sntnl) + 1, sizeof(int *));
-		}
-		else
-		{
-			new = ft_calloc(3, sizeof(int *));
-			new[0] = ft_calloc(ft_intarrlen(old[0], sntnl), sizeof(int *));
-			new[1] = ft_calloc(ft_intarrlen(old[1], sntnl) + 1, sizeof(int *));
-		}
+		new = ft_calloc(3, sizeof(int *));
+		new[1] = ft_calloc(ft_intarrlen(old[1], sentinel), sizeof(int *));
+		new[0] = ft_calloc(ft_intarrlen(old[0], sentinel) + 1, sizeof(int *));
 	}
 	else
 	{
-		free(old[1]);
-		free(old[0]);
-		free(old);
+		new = ft_calloc(3, sizeof(int *));
+		new[0] = ft_calloc(ft_intarrlen(old[0], sentinel), sizeof(int *));
+		new[1] = ft_calloc(ft_intarrlen(old[1], sentinel) + 1, sizeof(int *));
 	}
 	return (new);
-}
-
-int	ft_intarrlen(int *a, int sentinel)
-{
-	int	c;
-
-	c = 0;
-	while (a[c] != sentinel)
-	{
-		c++;
-	}
-	return (c);
 }

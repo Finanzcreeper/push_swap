@@ -1,15 +1,15 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
-NAME = push_swap.a
+NAME = push_swap
 VPATH = actions
-SRC = push_swap_input_handler.c push_swap.c presort.c push_swap_coder.c push.c swap.c rev_rotate.c rotate.c
+SRC = push_swap_input_handler.c utils.c presort.c push.c swap.c rev_rotate.c rotate.c main.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	make -C libft
-	ar -cq $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $^ libft/*.o -o $(NAME)
 
 test : $(NAME) comp clean
 	 - rm $(NAME)

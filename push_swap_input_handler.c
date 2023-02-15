@@ -6,13 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/13 14:36:14 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/14 16:26:40 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 
 int	*handler(int argc, char *argv[], int *err, int *sentinel)
 {
