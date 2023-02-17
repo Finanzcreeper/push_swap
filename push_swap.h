@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:06:56 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/15 17:33:22 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/17 19:25:51 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,46 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
+struct s_stacks
+{
+	int	sentinel;
+	int	**arrs;
+};
+
 int		*handler(int argc, char *argv[], int *err, int *sentinel);
 int		non_int_handler(char *input);
 int		char_to_int(char *input, long int *out);
 int		duplicate_finder(int *a, int argc, int *sentinel);
-int		*presort(int **arrs, int sentinel);
-void	sa(int **arrs, int sentinel);
-void	sb(int **arrs, int sentinel);
-void	ss(int **arr, int sentinel);
-int		**pa(int **old, int sentinel);
-int		**pb(int **old, int sentinel);
-void	free_arr(int **old);
+int		*presort(struct s_stacks stack);
+void	sa(struct s_stacks stack, int silencer);
+void	sb(struct s_stacks stack, int silencer);
+void	ss(struct s_stacks stack, int silencer);
+int		**pa(struct s_stacks old, int silencer);
+int		**pb(struct s_stacks old, int silencer);
+void	free_arr(struct s_stacks old);
 int		**alloc_arr(int **old, int sentinel, int pa);
 int		ft_intarrlen(int *a, int sentinel);
-void	ra(int **arrs, int sentinel);
-void	rb(int **arrs, int sentinel);
-void	rr(int **arrs, int sentinel);
-void	rra(int **arrs, int sentinel);
-void	rrb(int **arrs, int sentinel);
-void	rrr(int **arrs, int sentinel);
-void	bubble(int **arrs, int sentinel);
+void	ra(struct s_stacks stack, int silencer);
+void	rb(struct s_stacks stack, int silencer);
+void	rr(struct s_stacks stack, int silencer);
+void	rra(struct s_stacks stack, int silencer);
+void	rrb(struct s_stacks stack, int silencer);
+void	rrr(struct s_stacks stack, int silencer);
 int		*fillarr(int *in, int sentinel);
-void	mysort(int **arrs, int sentinel, int *presorted);
-int		**sorter(int **arrs, int sentinel, int c);
+int		issort(struct s_stacks stack);
+int		mysort(struct s_stacks stack, int *p, int segment, int silencer);
+void	r_or_rr(struct s_stacks stack, int *aw, int *moves, int silencer);
+int		**sorter(struct s_stacks stack, int c, int *moves, int silencer);
+void	u6(struct s_stacks stack, int *presorted);
+int		**threelen(int **a, struct s_stacks stack);
+void	fourlen(struct s_stacks stack, int *presorted);
+void	fivelen(struct s_stacks stack, int *presorted);
+int		testsort(struct s_stacks stack, int *presorted);
+void	normloop(struct s_stacks stack, int c);
+int		push_norm_loop(struct s_stacks old, int c, int pb, int **new);
+int		annoyrm(struct s_stacks *stack, int argc, char *argv[]);
+void	doerr(struct s_stacks stack);
+void	mocknorm(struct s_stacks *mockstack, struct s_stacks stack);
+int		normwhile(struct s_stacks s, int segment, int *p, int silencer);
+void	normelsa(struct s_stacks stack, int *aw, int *m, int silencer);
 #endif

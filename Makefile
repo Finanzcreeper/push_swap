@@ -1,8 +1,9 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 NAME = push_swap
-VPATH = actions
-SRC = push_swap_input_handler.c utils.c presort.c push.c swap.c rev_rotate.c rotate.c main.c
+VPATH = actions sorts utils
+SRC = thougty_bubble2.c utils.c presort.c push.c swap.c rev_rotate.c rotate.c main.c issort.c push_swap_input_handler.c\
+sort_under_6.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)

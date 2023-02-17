@@ -6,73 +6,69 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:18:29 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/15 18:00:29 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/17 18:27:49 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	**pb(int **old, int sentinel)
+int	**pb(struct s_stacks old, int silencer)
 {
 	int	**new;
 	int	c;
 
-	if (old[0][0] == sentinel)
-		return (old);
-	new = alloc_arr(old, sentinel, 0);
-	new[1][0] = old[0][0];
+	if (old.arrs[0][0] == old.sentinel)
+		return (old.arrs);
+	new = alloc_arr(old.arrs, old.sentinel, 0);
+	new[1][0] = old.arrs[0][0];
 	c = 0;
-	while (old[0][c + 1] != sentinel)
+	while (old.arrs[0][c + 1] != old.sentinel)
 	{
-		new[0][c] = old[0][c + 1];
+		new[0][c] = old.arrs[0][c + 1];
 		c++;
 	}
-	new[0][c] = sentinel;
+	new[0][c] = old.sentinel;
 	c = 1;
-	while (old[1][c - 1] != sentinel)
-	{
-		new[1][c] = old[1][c - 1];
-		c++;
-	}
-	new[1][c] = sentinel;
+	c = push_norm_loop(old, c, 1, new);
+	new[1][c] = old.sentinel;
 	free_arr(old);
-	write(1, "pb\n", 3);
-	return (new);
+	old.arrs = new;
+	if (silencer == 0)
+		write(1, "pb\n", 3);
+	return (old.arrs);
 }
 
-int	**pa(int **old, int sentinel)
+int	**pa(struct s_stacks old, int silencer)
 {
 	int	**new;
 	int	c;
 
-	if (old[1][0] == sentinel)
-		return (old);
-	new = alloc_arr(old, sentinel, 1);
-	new[0][0] = old[1][0];
+	if (old.arrs[1][0] == old.sentinel)
+		return (old.arrs);
+	new = alloc_arr(old.arrs, old.sentinel, 1);
+	new[0][0] = old.arrs[1][0];
 	c = 0;
-	while (old[1][c + 1] != sentinel)
+	while (old.arrs[1][c + 1] != old.sentinel)
 	{
-		new[1][c] = old[1][c + 1];
+		new[1][c] = old.arrs[1][c + 1];
 		c++;
 	}
-	new[1][c] = sentinel;
+	new[1][c] = old.sentinel;
 	c = 1;
-	while (old[0][c - 1] != sentinel)
-	{
-		new[0][c] = old[0][c - 1];
-		c++;
-	}
-	new[0][c] = sentinel;
+	c = push_norm_loop(old, c, 0, new);
+	new[0][c] = old.sentinel;
 	free_arr(old);
-	write(1, "pa\n", 3);
-	return (new);
+	old.arrs = new;
+	if (silencer == 0)
+		write(1, "pa\n", 3);
+	return (old.arrs);
 }
 
-void	free_arr(int **old)
+void	free_arr(struct s_stacks old)
 {
-	free(old[1]);
-	free(old[0]);
-	free(old);
+	free(old.arrs[1]);
+	free(old.arrs[0]);
+	free(old.arrs);
 }
 
 int	**alloc_arr(int **old, int sentinel, int pa)

@@ -6,11 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/14 16:26:40 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/16 09:57:09 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	*handler(int argc, char *argv[], int *err, int *sentinel)
 {
