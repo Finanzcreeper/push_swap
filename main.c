@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:34:46 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 19:05:56 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/17 21:42:15 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int argc, char *argv[])
 	int				*pre;
 	struct s_stacks	stack;
 
-	err = annoyrm(&stack, argc, argv);
+	err = 0;
+	/*stack = */annoyrm(&stack, argc, argv, &err);
 	if (err > 0)
 	{
 		doerr(stack);
@@ -75,4 +76,5 @@ void	mocknorm(struct s_stacks *mockstack, struct s_stacks stack)
 	mockstack -> arrs[0] = fillarr(stack.arrs[0], stack.sentinel);
 	mockstack -> arrs[1] = ft_calloc(1, sizeof(int));
 	mockstack -> arrs[1][0] = stack.sentinel;
+	mockstack -> sentinel = stack.sentinel;
 }

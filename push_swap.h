@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:06:56 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 19:25:51 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/17 21:44:29 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	fivelen(struct s_stacks stack, int *presorted);
 int		testsort(struct s_stacks stack, int *presorted);
 void	normloop(struct s_stacks stack, int c);
 int		push_norm_loop(struct s_stacks old, int c, int pb, int **new);
-int		annoyrm(struct s_stacks *stack, int argc, char *argv[]);
 void	doerr(struct s_stacks stack);
 void	mocknorm(struct s_stacks *mockstack, struct s_stacks stack);
-int		normwhile(struct s_stacks s, int segment, int *p, int silencer);
+int		normwhile(struct s_stacks *s, int segment, int *p, int silencer);
 void	normelsa(struct s_stacks stack, int *aw, int *m, int silencer);
+//test
+void	annoyrm(struct s_stacks *stack, int argc, char *argv[], int *err);
 #endif

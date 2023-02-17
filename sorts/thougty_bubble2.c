@@ -6,15 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 09:30:52 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 19:25:39 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/17 21:28:59 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// int *s
-// segment =  arrs[2]
-// silencer = arrs[3]
 
 int	mysort(struct s_stacks s, int *p, int segment, int silencer)
 {
@@ -23,7 +19,7 @@ int	mysort(struct s_stacks s, int *p, int segment, int silencer)
 	int	moves;
 
 	aw = ft_calloc(2, sizeof(int));
-	moves = normwhile(s, segment, p, silencer);
+	moves = normwhile(&s, segment, p, silencer);
 	i = 0;
 	while (p[aw[0]] != s.sentinel)
 	{
@@ -43,7 +39,7 @@ int	mysort(struct s_stacks s, int *p, int segment, int silencer)
 	return (moves);
 }
 
-int	normwhile(struct s_stacks s, int segment, int *p, int silencer)
+int	normwhile(struct s_stacks *s, int segment, int *p, int silencer)
 {
 	int	i;
 	int	*aw;
@@ -54,20 +50,21 @@ int	normwhile(struct s_stacks s, int segment, int *p, int silencer)
 	bucket = segment;
 	i = 0;
 	aw = ft_calloc(2, sizeof(int));
-	while (p[i] != s.sentinel)
+	while (p[i] != s -> sentinel)
 	{
 		if (i >= bucket)
 			bucket += segment;
-		if (bucket > ft_intarrlen(p, s.sentinel))
-			bucket = ft_intarrlen(p, s.sentinel);
-		while (s.arrs[0][aw[0]] > p[bucket - 1])
+		if (bucket > ft_intarrlen(p, s -> sentinel))
+			bucket = ft_intarrlen(p, s -> sentinel);
+		while (s -> arrs[0][aw[0]] > p[bucket - 1])
 			aw[0]++;
-		r_or_rr(s, aw, &moves, silencer);
-		s.arrs = pb(s, silencer);
+		r_or_rr(*s, aw, &moves, silencer);
+		s -> arrs = pb(*s, silencer);
 		moves++;
 		aw[0] = 0;
 		i++;
 	}
+	free(aw);
 	return (moves);
 }
 
@@ -82,6 +79,7 @@ int	**sorter(struct s_stacks stack, int c, int *moves, int silencer)
 	stack.arrs = pa(stack, silencer);
 	ra(stack, silencer);
 	*moves += 2;
+	free(aw);
 	return (stack.arrs);
 }
 
