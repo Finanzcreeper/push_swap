@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:38:13 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 17:20:37 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 17:39:02 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	u6(struct s_stacks stack, int *presorted)
 
 	len = ft_intarrlen(stack.arrs[0], stack.sentinel);
 	if (len == 2)
-		{
-			ra(stack, 0);
-			free_arr(stack);
-		}
+	{
+		ra(stack, 0);
+		free_arr(stack);
+	}
 	if (len == 3)
 	{
 		stack.arrs = threelen(stack.arrs, stack);
