@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:18:29 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 20:57:32 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 13:38:28 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ int	**pb(struct s_stacks old, int silencer)
 
 	if (old.arrs[0][0] == old.sentinel)
 		return (old.arrs);
+	if (old.arrs == NULL || old.arrs[1] == NULL || old.arrs[0] == NULL)
+		return (NULL);
 	new = alloc_arr(old.arrs, old.sentinel, 0);
+	if (new == NULL || new[1] == NULL || new[0] == NULL)
+		return (NULL);
 	new[1][0] = old.arrs[0][0];
 	c = 0;
 	while (old.arrs[0][c + 1] != old.sentinel)
@@ -44,7 +48,11 @@ int	**pa(struct s_stacks old, int silencer)
 
 	if (old.arrs[1][0] == old.sentinel)
 		return (old.arrs);
+	if (old.arrs == NULL || old.arrs[1] == NULL || old.arrs[0] == NULL)
+		return (NULL);
 	new = alloc_arr(old.arrs, old.sentinel, 1);
+	if (new == NULL || new[1] == NULL || new[0] == NULL)
+		return (NULL);
 	new[0][0] = old.arrs[1][0];
 	c = 0;
 	while (old.arrs[1][c + 1] != old.sentinel)
@@ -64,9 +72,15 @@ int	**pa(struct s_stacks old, int silencer)
 
 void	free_arr(struct s_stacks old)
 {
-	free(old.arrs[1]);
-	free(old.arrs[0]);
-	free(old.arrs);
+	if (old.arrs != NULL)
+	{
+		if (old.arrs[1] != NULL)
+			free(old.arrs[1]);
+		if (old.arrs[0] != NULL)
+			free(old.arrs[0]);
+		if (old.arrs != NULL)
+			free(old.arrs);
+	}
 }
 
 int	**alloc_arr(int **old, int sentinel, int pa)
@@ -76,8 +90,12 @@ int	**alloc_arr(int **old, int sentinel, int pa)
 	if (pa == 1)
 	{
 		new = ft_calloc(2, sizeof(int *));
-		new[1] = ft_calloc(ft_intarrlen(old[1], sentinel), sizeof(int *));
-		new[0] = ft_calloc(ft_intarrlen(old[0], sentinel) + 1, sizeof(int *));
+		if (new != NULL)
+		{
+			new[1] = ft_calloc(ft_intarrlen(old[1], sentinel), sizeof(int *));
+			new[0] = ft_calloc(ft_intarrlen(old[0], sentinel) + 1,
+					sizeof(int *));
+		}
 	}
 	else
 	{

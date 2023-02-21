@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:38:13 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 18:15:57 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 12:01:11 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ void	fourlen(struct s_stacks stack, int *presorted)
 	stack.arrs = pa(stack, 0);
 	while (stack.arrs[0][c] != presorted[0])
 		c++;
-	while (c < 3 && c > 0)
-	{
+	c++;
+	while (c--, c < 3 && c > 0)
 		ra(stack, 0);
-		c--;
-	}
 	normloop(stack, c);
 	free_arr(stack);
 }

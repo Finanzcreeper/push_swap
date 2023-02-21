@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:34:21 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 18:16:31 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:07:49 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	*presort(struct s_stacks stack)
 
 	len = ft_intarrlen(stack.arrs[0], stack.sentinel);
 	a = fillarr(stack.arrs[0], stack.sentinel);
+	if (a == NULL)
+		return (NULL);
 	temp = 1;
 	while (temp == 1)
 	{
@@ -29,12 +31,7 @@ int	*presort(struct s_stacks stack)
 		while (c + 1 < len)
 		{
 			if (a[c] > a[c + 1])
-			{
-				temp = a[c];
-				a[c] = a[c + 1];
-				a[c + 1] = temp;
-				temp = 1;
-			}
+				a = schwap(a, &temp, c);
 			c++;
 		}
 	}
@@ -47,6 +44,8 @@ int	*fillarr(int *in, int sentinel)
 	int	c;
 
 	out = ft_calloc(ft_intarrlen(in, sentinel), sizeof(int *));
+	if (out == NULL)
+		return (NULL);
 	c = 0;
 	while (in[c] != sentinel)
 	{

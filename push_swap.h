@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:06:56 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 21:44:29 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:20:36 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	doerr(struct s_stacks stack);
 void	mocknorm(struct s_stacks *mockstack, struct s_stacks stack);
 int		normwhile(struct s_stacks *s, int segment, int *p, int silencer);
 void	normelsa(struct s_stacks stack, int *aw, int *m, int silencer);
-//test
 void	annoyrm(struct s_stacks *stack, int argc, char *argv[], int *err);
+void	freeaw(struct s_stacks s, int *aw);
+int		bucky(int i, int bucket, int segment);
+int		*schwap(int *a, int *temp, int c);
+//test
+int		*normain(struct s_stacks stack);
 #endif

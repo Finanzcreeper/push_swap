@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 21:14:01 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/21 13:03:54 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	*handler(int argc, char *argv[], int *err, int *sentinel)
 	int			*a;
 
 	a = ft_calloc(argc, sizeof(int));
+	if (a == NULL)
+		return (NULL);
 	c = 1;
 	while (c < argc)
 	{
