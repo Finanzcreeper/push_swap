@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 13:03:54 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 21:20:27 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	char_to_int(char *input, long int *out)
 	}
 	if (rev == 1)
 		*out *= -1;
-	if (ft_strlen(input) > 10 || *out < -2147483648 || *out > 2147483647)
+	if (ft_strlen(input) > 11 || *out < -2147483648 || *out > 2147483647)
 		return (1);
 	return (0);
 }

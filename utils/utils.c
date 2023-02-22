@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:19:14 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 12:59:17 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 21:23:17 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int	push_norm_loop(struct s_stacks old, int c, int pb, int **new)
 
 void	annoyrm(struct s_stacks *stack, int argc, char *argv[], int *err)
 {
+	if (argc == 1)
+	{
+		stack -> arrs = NULL;
+		return ;
+	}
 	stack -> arrs = ft_calloc(2, sizeof(int *));
 	if (stack -> arrs != NULL)
 	{
