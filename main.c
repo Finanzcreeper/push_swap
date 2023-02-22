@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:34:46 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 15:22:28 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:28 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[])
 
 	err = 0;
 	annoyrm(&stack, argc, argv, &err);
-	if (stack.arrs == NULL || stack.arrs[0] == NULL || stack.arrs[1] == NULL)
+	if (stack.ar == NULL || stack.ar[0] == NULL || stack.ar[1] == NULL)
 		return (-1);
 	if (err > 0)
 	{
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 	pre = normain(stack);
 	if (pre == NULL)
 		return (0);
-	if (ft_intarrlen(stack.arrs[0], stack.sentinel) < 6)
+	if (len(stack.ar[0], stack.st) < 6)
 	{
 		u6(stack, pre);
 		free(pre);
@@ -49,17 +49,17 @@ int	testsort(struct s_stacks stack, int *presorted)
 	struct s_stacks	mockstack;
 
 	err = 0;
-	r = ft_calloc(ft_intarrlen(stack.arrs[0], stack.sentinel) + 1, sizeof(int));
-	while (err < ft_intarrlen(stack.arrs[0], stack.sentinel))
+	r = ft_calloc(len(stack.ar[0], stack.st) + 1, sizeof(int));
+	while (err < len(stack.ar[0], stack.st))
 	{
 		mocknorm(&mockstack, stack);
 		err++;
 		r[err - 1] = mysort(mockstack, presorted, err, 1);
 	}
-	r[err] = stack.sentinel;
+	r[err] = stack.st;
 	c = 0;
 	err = 1;
-	while (r[err] != stack.sentinel)
+	while (r[err] != stack.st)
 	{
 		if (r[c] > r[err])
 			c = err;
@@ -71,13 +71,13 @@ int	testsort(struct s_stacks stack, int *presorted)
 
 void	mocknorm(struct s_stacks *mockstack, struct s_stacks stack)
 {
-	mockstack -> arrs = ft_calloc(3, sizeof(int *));
-	if (mockstack -> arrs != NULL)
+	mockstack -> ar = ft_calloc(3, sizeof(int *));
+	if (mockstack -> ar != NULL)
 	{
-		mockstack -> arrs[0] = fillarr(stack.arrs[0], stack.sentinel);
-		mockstack -> arrs[1] = ft_calloc(1, sizeof(int));
-		if (mockstack -> arrs != NULL)
-			mockstack -> arrs[1][0] = stack.sentinel;
-		mockstack -> sentinel = stack.sentinel;
+		mockstack -> ar[0] = fillarr(stack.ar[0], stack.st);
+		mockstack -> ar[1] = ft_calloc(1, sizeof(int));
+		if (mockstack -> ar != NULL)
+			mockstack -> ar[1][0] = stack.st;
+		mockstack -> st = stack.st;
 	}
 }

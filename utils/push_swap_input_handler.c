@@ -6,13 +6,13 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:14:54 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/22 21:20:27 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:19 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	*handler(int argc, char *argv[], int *err, int *sentinel)
+int	*handler(int argc, char *argv[], int *err, int *st)
 {
 	int			c;
 	long int	out;
@@ -30,7 +30,7 @@ int	*handler(int argc, char *argv[], int *err, int *sentinel)
 		a[c - 1] = out;
 		c++;
 	}
-	*err += duplicate_finder(a, argc, sentinel);
+	*err += duplicate_finder(a, argc, st);
 	return (a);
 }
 
@@ -84,12 +84,12 @@ int	char_to_int(char *input, long int *out)
 	return (0);
 }
 
-int	duplicate_finder(int *a, int argc, int *sentinel)
+int	duplicate_finder(int *a, int argc, int *st)
 {
 	int	c;
 	int	i;
 
-	*sentinel = -2147483648;
+	*st = -2147483648;
 	c = 0;
 	i = 0;
 	while (c < argc - 1)
@@ -97,8 +97,8 @@ int	duplicate_finder(int *a, int argc, int *sentinel)
 		i = c + 1;
 		while (i < argc - 1)
 		{
-			if (*sentinel == a[i])
-				*sentinel += 1;
+			if (*st == a[i])
+				*st += 1;
 			if (a[c] == a[i])
 			{
 				return (1);
@@ -107,6 +107,6 @@ int	duplicate_finder(int *a, int argc, int *sentinel)
 		}
 		c++;
 	}
-	a[c] = *sentinel;
+	a[c] = *st;
 	return (0);
 }

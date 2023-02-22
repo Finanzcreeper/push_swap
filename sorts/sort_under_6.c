@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:38:13 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 17:39:02 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:12 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	u6(struct s_stacks stack, int *presorted)
 {
-	int	len;
+	int	leng;
 
-	len = ft_intarrlen(stack.arrs[0], stack.sentinel);
-	if (len == 2)
+	leng = len(stack.ar[0], stack.st);
+	if (leng == 2)
 	{
 		ra(stack, 0);
 		free_arr(stack);
 	}
-	if (len == 3)
+	if (leng == 3)
 	{
-		stack.arrs = threelen(stack.arrs, stack);
+		stack.ar = threelen(stack.ar, stack);
 		free_arr(stack);
 	}
-	if (len == 4)
+	if (leng == 4)
 		fourlen(stack, presorted);
-	if (len == 5)
+	if (leng == 5)
 		fivelen(stack, presorted);
 }
 
@@ -66,19 +66,19 @@ void	fourlen(struct s_stacks stack, int *presorted)
 
 	c = 0;
 	presorted[0] = 1;
-	while (ft_intarrlen(stack.arrs[0], stack.sentinel) > 3)
-		stack.arrs = pb(stack, 0);
-	stack.arrs = threelen(stack.arrs, stack);
+	while (len(stack.ar[0], stack.st) > 3)
+		stack.ar = pb(stack, 0);
+	stack.ar = threelen(stack.ar, stack);
 	c = 0;
-	while (stack.arrs[1][0] != presorted[c])
+	while (stack.ar[1][0] != presorted[c])
 		c++;
 	while (c > 0)
 	{
 		ra(stack, 0);
 		c--;
 	}
-	stack.arrs = pa(stack, 0);
-	while (stack.arrs[0][c] != presorted[0])
+	stack.ar = pa(stack, 0);
+	while (stack.ar[0][c] != presorted[0])
 		c++;
 	c++;
 	while (c--, c < 3 && c > 0)
@@ -92,21 +92,21 @@ void	fivelen(struct s_stacks stack, int *presorted)
 	int	i;
 
 	i = 0;
-	while (presorted[0] != stack.arrs[0][i])
+	while (presorted[0] != stack.ar[0][i])
 		i++;
 	if (i == 4)
 		rra(stack, 0);
 	else
 	{
-		while (stack.arrs[0][0] != presorted[0])
+		while (stack.ar[0][0] != presorted[0])
 			ra(stack, 0);
 	}
-	stack.arrs = pb(stack, 0);
-	while (stack.arrs[0][0] != presorted[1])
+	stack.ar = pb(stack, 0);
+	while (stack.ar[0][0] != presorted[1])
 		ra(stack, 0);
-	stack.arrs = pb(stack, 0);
-	stack.arrs = threelen(stack.arrs, stack);
-	stack.arrs = pa(stack, 0);
-	stack.arrs = pa(stack, 0);
+	stack.ar = pb(stack, 0);
+	stack.ar = threelen(stack.ar, stack);
+	stack.ar = pa(stack, 0);
+	stack.ar = pa(stack, 0);
 	free_arr(stack);
 }

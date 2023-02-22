@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:06:56 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 15:20:36 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:29 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 
 struct s_stacks
 {
-	int	sentinel;
-	int	**arrs;
+	int	st;
+	int	**ar;
 };
 
-int		*handler(int argc, char *argv[], int *err, int *sentinel);
+int		*handler(int argc, char *argv[], int *err, int *st);
 int		non_int_handler(char *input);
 int		char_to_int(char *input, long int *out);
-int		duplicate_finder(int *a, int argc, int *sentinel);
+int		duplicate_finder(int *a, int argc, int *st);
 int		*presort(struct s_stacks stack);
 void	sa(struct s_stacks stack, int silencer);
 void	sb(struct s_stacks stack, int silencer);
@@ -33,15 +33,15 @@ void	ss(struct s_stacks stack, int silencer);
 int		**pa(struct s_stacks old, int silencer);
 int		**pb(struct s_stacks old, int silencer);
 void	free_arr(struct s_stacks old);
-int		**alloc_arr(int **old, int sentinel, int pa);
-int		ft_intarrlen(int *a, int sentinel);
+int		**alloc_arr(int **old, int st, int pa);
+int		len(int *a, int st);
 void	ra(struct s_stacks stack, int silencer);
 void	rb(struct s_stacks stack, int silencer);
 void	rr(struct s_stacks stack, int silencer);
 void	rra(struct s_stacks stack, int silencer);
 void	rrb(struct s_stacks stack, int silencer);
 void	rrr(struct s_stacks stack, int silencer);
-int		*fillarr(int *in, int sentinel);
+int		*fillarr(int *in, int st);
 int		issort(struct s_stacks stack);
 int		mysort(struct s_stacks stack, int *p, int segment, int silencer);
 void	r_or_rr(struct s_stacks stack, int *aw, int *moves, int silencer);

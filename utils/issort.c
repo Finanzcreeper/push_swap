@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:27:46 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/17 18:16:27 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:15 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	issort(struct s_stacks stack)
 
 	out = 0;
 	c = 1;
-	while (stack.arrs[0][c] != stack.sentinel)
+	while (stack.ar[0][c] != stack.st)
 	{
-		if (stack.arrs[0][c] < stack.arrs[0][c - 1])
+		if (stack.ar[0][c] < stack.ar[0][c - 1])
 			out = 1;
 		c++;
 	}

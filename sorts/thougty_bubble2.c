@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 09:30:52 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/21 15:04:22 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:02:13 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	mysort(struct s_stacks s, int *p, int segment, int silencer)
 	}
 	moves = normwhile(&s, segment, p, silencer);
 	i = 0;
-	while (p[aw[0]] != s.sentinel)
+	while (p[aw[0]] != s.st)
 	{
-		while (s.arrs[1][i] != p[aw[0]] && s.arrs[1][i] != s.sentinel)
+		while (s.ar[1][i] != p[len(p, s.st) - aw[0] - 1] && s.ar[1][i] != s.st)
 			i++;
-		if (s.arrs[1][i] == p[aw[0]])
-			s.arrs = sorter(s, i, &moves, silencer);
-		if (s.arrs == NULL)
+		if (s.ar[1][i] == p[len(p, s.st) - aw[0] - 1])
+			s.ar = sorter(s, i, &moves, silencer);
+		if (s.ar == NULL)
 			break ;
 		aw[0]++;
 		i = 0;
@@ -54,15 +54,15 @@ int	normwhile(struct s_stacks *s, int segment, int *p, int silencer)
 	aw = ft_calloc(2, sizeof(int));
 	if (aw == NULL)
 		return (0);
-	while (i++, p[i] != s -> sentinel)
+	while (i++, p[i] != s -> st)
 	{
 		bucket = bucky(i, bucket, segment);
-		if (bucket > ft_intarrlen(p, s -> sentinel))
-			bucket = ft_intarrlen(p, s -> sentinel);
-		while (s -> arrs[0][aw[0]] > p[bucket - 1])
+		if (bucket > len(p, s -> st))
+			bucket = len(p, s -> st);
+		while (s -> ar[0][aw[0]] > p[bucket - 1])
 			aw[0]++;
 		r_or_rr(*s, aw, &moves, silencer);
-		s -> arrs = pb(*s, silencer);
+		s -> ar = pb(*s, silencer);
 		moves++;
 		aw[0] = 0;
 	}
@@ -83,19 +83,18 @@ int	**sorter(struct s_stacks stack, int c, int *moves, int silencer)
 	aw[0] = c;
 	aw[1] = 1;
 	r_or_rr(stack, aw, moves, silencer);
-	stack.arrs = pa(stack, silencer);
-	ra(stack, silencer);
+	stack.ar = pa(stack, silencer);
 	*moves += 2;
 	free(aw);
-	return (stack.arrs);
+	return (stack.ar);
 }
 
 void	r_or_rr(struct s_stacks stack, int *aw, int *m, int silencer)
 {
-	int	len;
+	int	leng;
 
-	len = ft_intarrlen(stack.arrs[aw[1]], stack.sentinel);
-	if (aw[0] < len / 2)
+	leng = len(stack.ar[aw[1]], stack.st);
+	if (aw[0] < leng / 2)
 	{
 		while (aw[0] > 0)
 		{
@@ -120,10 +119,10 @@ void	r_or_rr(struct s_stacks stack, int *aw, int *m, int silencer)
 
 void	normelsa(struct s_stacks stack, int *aw, int *m, int silencer)
 {
-	int	len;
+	int	leng;
 
-	len = ft_intarrlen(stack.arrs[aw[1]], stack.sentinel);
-	while (aw[0] < len)
+	leng = len(stack.ar[aw[1]], stack.st);
+	while (aw[0] < leng)
 	{
 		if (aw[1] == 0)
 		{
